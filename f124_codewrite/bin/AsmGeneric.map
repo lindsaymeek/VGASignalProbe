@@ -1,0 +1,192 @@
+
+PROGRAM "E:\contest2003\f124_cw\bin\AsmGeneric.abs"
+
+*********************************************************************************************
+TARGET SECTION
+---------------------------------------------------------------------------------------------
+Processor   : Motorola HC08
+Memory Model: SMALL
+File Format : ELF\Dwarf 2.0
+Linker      : SmartLinker V-5.0.19, Apr  2 2002
+
+*********************************************************************************************
+FILE SECTION
+---------------------------------------------------------------------------------------------
+qt4.asm.o                               Model: SMALL,         Lang: Assembler
+
+*********************************************************************************************
+STARTUP SECTION
+---------------------------------------------------------------------------------------------
+Entry point : 0xEE00 (_Reset)
+
+*********************************************************************************************
+SECTION-ALLOCATION SECTION
+Section Name                    Size  Type     From       To       Segment
+---------------------------------------------------------------------------------------------
+.stack                             8   R/W       0x80       0x87   MY_RAM
+qt4.asm__ORG00001                  1     R     0xFFC0     0xFFC0   .absSeg0
+.init                            544     R     0xEE00     0xF01F   MY_ROM
+MY_RAM                           120   R/W       0x88       0xFF   MY_RAM
+.vectSeg1_vect                     2     R     0xFFF2     0xFFF3   .vectSeg1
+.vectSeg2_vect                     2     R     0xFFFE     0xFFFF   .vectSeg2
+
+
+ROM size:      225 (dec:      549)
+RAM size:       80 (dec:      128)
+
+*********************************************************************************************
+VECTOR-ALLOCATION SECTION
+    Address     InitValue   InitFunction
+---------------------------------------------------------------------------------------------
+     0xFFF2        0xEE79   _TIMER_IRQ
+     0xFFFE        0xEE00   _Reset
+
+*********************************************************************************************
+OBJECT-ALLOCATION SECTION
+     Name               Module                 Addr   hSize   dSize     Ref    Section     RLIB
+---------------------------------------------------------------------------------------------
+MODULE:                 -- qt4.asm.o --
+- PROCEDURES:
+     _Reset                                    EE00      16      22       0   .init       
+     InitADC                                   EE16       9       9       1   .init       
+     InitIO                                    EE1F      17      23       1   .init       
+     InitTimers                                EE36      43      67       1   .init       
+     _TIMER_IRQ                                EE79       7       7       0   .init       
+     DoFreerun                                 EE80       B      11       2   .init       
+     LineLoop1                                 EE8B       8       8       0   .init       
+     00001WtHsync                              EE93       D      13       0   .init       
+     00002WtHsync                              EEA0       D      13       0   .init       
+     00003WtHsync                              EEAD       F      15       0   .init       
+     00004WtHsync                              EEBC       B      11       0   .init       
+     WtFrontPorcha                             EEBC       0       0       0   .init       
+     00005WtHsync                              EEC7      1A      26       0   .init       
+     WtVSYNCa                                  EEC7       0       0       0   .init       
+     00006Toggle                               EEE1       9       9       0   .init       
+     00006NotFreerun                           EEEA       7       7       0   .init       
+     00006GoFreerun                            EEF1       4       4       0   .init       
+     00006GoDown                               EEF5       E      14       0   .init       
+     00006DecTrig                              EF03       A      10       0   .init       
+     00006GoUp                                 EF0D       E      14       0   .init       
+     00006IncTrig                              EF1B       A      10       0   .init       
+     00006KeypressDone                         EF25       2       2       0   .init       
+     00007WtHsync                              EF27      13      19       0   .init       
+     WtBackPorchA                              EF27       0       0       0   .init       
+     DoDSO                                     EF3A       7       7       1   .init       
+     00008WtHsync                              EF41       D      13       0   .init       
+     LineLoop3a                                EF41       0       0       0   .init       
+     LineLoop2                                 EF4E       8       8       0   .init       
+     00009WtHsync                              EF56      1A      26       0   .init       
+     DoneSampling                              EF70      16      22       0   .init       
+     00010WtHsync                              EF70       0       0       0   .init       
+     ChkRising                                 EF86       2       2       0   .init       
+     GotTrigger                                EF88       4       4       0   .init       
+     DoneTrigger                               EF8C       F      15       0   .init       
+     00011WtHsync                              EF8C       0       0       0   .init       
+     00012WtHsync                              EF9B       9       9       0   .init       
+     LineLoop3                                 EF9B       0       0       0   .init       
+     00013WtHsync                              EFA4       B      11       0   .init       
+     WtFrontPorch                              EFA4       0       0       0   .init       
+     WtVSYNC                                   EFAF      15      21       0   .init       
+     00014Toggle                               EFC4       9       9       0   .init       
+     00014NotFreerun                           EFCD       7       7       0   .init       
+     00014GoFreerun                            EFD4       4       4       0   .init       
+     00014GoDown                               EFD8       E      14       0   .init       
+     00014DecTrig                              EFE6       A      10       0   .init       
+     00014GoUp                                 EFF0       E      14       0   .init       
+     00014IncTrig                              EFFE       A      10       0   .init       
+     00014KeypressDone                         F008       2       2       0   .init       
+     00015WtHsync                              F00A      13      19       0   .init       
+     WtBackPorch                               F00A       0       0       0   .init       
+     GoFreerun                                 F01D       3       3       0   .init       
+- VARIABLES:
+     trim_val                                  FFC0       1       1       0   .text       
+     LUM_TIMER                                   88       1       1       7   MY_RAM      
+     FLAGS                                       89       1       1      30   MY_RAM      
+     TMR_ACC                                     8A       1       1       3   MY_RAM      
+     SAMPLE_IDX                                  8B       1       1       5   MY_RAM      
+     STORAGE                                     8C      72     114       2   MY_RAM      
+     TRIGGER                                     FE       1       1      10   MY_RAM      
+     TMR_STEP                                    FF       1       1      10   MY_RAM      
+
+*********************************************************************************************
+SECTION USE IN OBJECT-ALLOCATION SECTION
+---------------------------------------------------------------------------------------------
+SECTION: ".text"
+  trim_val 
+SECTION: ".init"
+  _Reset InitADC InitIO InitTimers _TIMER_IRQ DoFreerun LineLoop1 00001WtHsync 
+  00002WtHsync 00003WtHsync WtFrontPorcha 00004WtHsync WtVSYNCa 00005WtHsync 
+  00006Toggle 00006NotFreerun 00006GoFreerun 00006GoDown 00006DecTrig 00006GoUp 
+  00006IncTrig 00006KeypressDone WtBackPorchA 00007WtHsync DoDSO LineLoop3a 
+  00008WtHsync LineLoop2 00009WtHsync 00010WtHsync DoneSampling ChkRising 
+  GotTrigger 00011WtHsync DoneTrigger LineLoop3 00012WtHsync WtFrontPorch 
+  00013WtHsync WtVSYNC 00014Toggle 00014NotFreerun 00014GoFreerun 00014GoDown 
+  00014DecTrig 00014GoUp 00014IncTrig 00014KeypressDone WtBackPorch 
+  00015WtHsync GoFreerun 
+SECTION: "MY_RAM"
+  LUM_TIMER FLAGS TMR_ACC SAMPLE_IDX STORAGE TRIGGER TMR_STEP 
+
+*********************************************************************************************
+UNUSED-OBJECTS SECTION
+---------------------------------------------------------------------------------------------
+
+*********************************************************************************************
+COPYDOWN SECTION
+---------------------------------------------------------------------------------------------
+
+*********************************************************************************************
+OBJECT-DEPENDENCIES SECTION
+---------------------------------------------------------------------------------------------
+_Reset                    USES LUM_TIMER InitIO InitADC InitTimers 
+InitTimers                USES LUM_TIMER FLAGS TRIGGER SAMPLE_IDX TMR_ACC 
+                                TMR_STEP 
+_TIMER_IRQ                USES LUM_TIMER 
+LineLoop1                 USES LUM_TIMER 
+00001WtHsync              USES LUM_TIMER 
+00002WtHsync              USES LUM_TIMER 
+00006Toggle               USES FLAGS 
+00006NotFreerun           USES FLAGS 
+00006GoFreerun            USES FLAGS 
+00006GoDown               USES FLAGS TMR_STEP 
+00006DecTrig              USES FLAGS TRIGGER 
+00006GoUp                 USES FLAGS TMR_STEP 
+00006IncTrig              USES FLAGS TRIGGER 
+00007WtHsync              USES FLAGS DoFreerun 
+LineLoop2                 USES STORAGE LUM_TIMER 
+00009WtHsync              USES TMR_ACC TMR_STEP SAMPLE_IDX STORAGE 
+DoneSampling              USES SAMPLE_IDX TRIGGER FLAGS 
+GotTrigger                USES SAMPLE_IDX 
+00014Toggle               USES FLAGS 
+00014NotFreerun           USES FLAGS 
+00014GoFreerun            USES FLAGS 
+00014GoDown               USES FLAGS TMR_STEP 
+00014DecTrig              USES FLAGS TRIGGER 
+00014GoUp                 USES FLAGS TMR_STEP 
+00014IncTrig              USES FLAGS TRIGGER 
+00015WtHsync              USES FLAGS DoDSO 
+GoFreerun                 USES DoFreerun 
+
+*********************************************************************************************
+DEPENDENCY TREE
+*********************************************************************************************
+ _Reset              
+ | 
+ +- InitIO              
+ |    
+ +- InitADC             
+ |    
+ +- InitTimers          
+      
+ _ORG00001           
+   
+ _TIMER_IRQ          
+   
+*********************************************************************************************
+STATISTIC SECTION
+---------------------------------------------------------------------------------------------
+
+ExeFile:
+--------
+Number of blocks to be downloaded: 4
+Total size of all blocks to be downloaded: 549
+
